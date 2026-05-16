@@ -1,78 +1,91 @@
-# Task 1: Firmware Library Fundamentals
-
-## Deadline
-4 days from the task announcement date.
+# Writing down my understandings and screenshots
 
 ---
 
-## Objective
+# What is a firmware library?
 
-The goal of Task 1 is to:
+A firmware library is a collection of reusable functions and definitions used to interact with hardware in embedded systems. Firmware libraries provide an abstraction layer between the hardware registers and the application code.
 
-- Understand how firmware libraries are structured  
-- Understand how application code uses APIs  
-- Set up a basic development environment  
-- Build and study a simple firmware-style library  
+Instead of directly accessing low-level hardware registers every time, developers can use APIs such as `gpio_init()`, `gpio_write()`, and `gpio_read()` to control peripherals easily.
 
-This task does **not** require the VSDSquadron Mini board.
+Firmware libraries improve:
+- Code readability
+- Reusability
+- Portability
+- Maintainability
 
----
+They also help organize embedded firmware projects in a structured way.
 
+Example:
+- `gpio.h` contains API declarations
+- `gpio.c` contains implementations
+- `main.c` uses the APIs
 
-## What to Do
+This separation is commonly used in real embedded firmware development.
 
-### Step 1: Read the Code
-
-- Open `gpio.h` and understand the exposed API  
-- Open `gpio.c` and see how the API is implemented  
-- Open `main.c` and observe how the API is used by the application  
-
----
-
-### Step 2: Build the Code
-
-From inside the `task1` directory, run:
-
-```bash
-gcc main.c gpio.c -o task1_demo
-````
+![Memory Map](memorymap.png)
 
 ---
 
-### Step 3: Run the Program
+# Why are APIs important?
 
-```bash
-./task1_demo
-```
+APIs provide a simple and developer-friendly way to access hardware functionality.
 
----
+Without APIs, application code would need to directly manipulate hardware registers, which increases complexity and reduces readability.
 
-## Expected Output
+APIs help by:
+- Hiding hardware complexity
+- Improving code modularity
+- Making firmware reusable across projects
+- Simplifying debugging and maintenance
 
-Console messages simulating GPIO behavior.
+In embedded systems, APIs allow developers to write application logic without worrying about low-level implementation details.
 
----
+For example:
+- `gpio_write(pin, value)` can internally control registers
+- But the application developer only uses the function call
 
-## What to Submit
-
-1. A short explanation (Markdown or PDF) covering:
-
-   * What is a firmware library?
-   * Why are APIs important?
-   * What you understood from this task
-
-2. Screenshots of:
-
-   * Successful compilation
-   * Program output
-
-3. GitHub repository link (forked or personal)
+This makes firmware development cleaner and more scalable.
 
 ---
 
-## Important
+# What was understood from the lab code?
 
-This task sets the foundation for all upcoming hardware and firmware work.
-Incomplete understanding here **will cause difficulties in later tasks**.
+From this lab, I understood how embedded firmware libraries are structured.
 
+The project was divided into:
+- `gpio.h` → API declarations
+- `gpio.c` → function implementations
+- `main.c` → application logic
 
+The GPIO APIs had a consistent structure:
+- `gpio_init()`
+- `gpio_write()`
+- `gpio_read()`
+
+The lab demonstrated:
+- Separation of interface and implementation
+- Firmware modularity
+- Reusable API-based design
+- Simulation of GPIO behavior without actual hardware
+
+This structure is commonly followed in embedded firmware projects.
+
+---
+
+# Program Execution Screenshot
+
+![Program Output](output.png)
+
+---
+
+# Conclusion
+
+This task helped me understand:
+- Firmware basics
+- API-oriented embedded programming
+- Firmware library structure
+- GCC compilation process
+- Basic Git and GitHub workflow
+
+The development environment was successfully configured and the firmware simulation program executed correctly.![alt text](<Screenshot 2026-05-14 212127.png>)
